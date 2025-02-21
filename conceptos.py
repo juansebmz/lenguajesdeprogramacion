@@ -1,3 +1,6 @@
+import math
+
+from functools import reduce
 # #Conceptos basicos de programacion funcional
 # def suma (a,b):
 #     return a+b
@@ -77,6 +80,9 @@ ciudades_norm2 = list(map(capitalziar, ciudades))
 
 
 
+def capitalizar(palabra):
+    return math.tan(palabra)
+
 ciudades_norm = normalizar_datos(ciudades)
 print(f"Datos sin normalizar:{ciudades}")
 print(f"Datos normalizados:{ciudades_norm}")
@@ -90,3 +96,47 @@ print(f"Datos normalizados con map (con lambda):{ciudades_norm3}")
 
     
 #Ejemplo con una funcion de orden superior: map
+#Map:Aplicar una funcion a una colección de objetos
+
+
+
+#Funcion filter aplica una funcion booleana sobre una lista de objetos, y devuelve una lista mas pequeña
+edades = [12, 14, 18, 19, 24, 25, 28]
+
+personas = [{"nombre": "Diego", "edad": "38"},
+            {"nombre": "Diana", "edad": "34"},
+            {"nombre": "Carolina", "edad": "36"},
+            {"nombre": "Pedro", "edad": "28"}]
+
+print(personas[0]["nombre"])
+
+print(f"\nEdades sin filtrar: {edades}")
+
+# La función de filtro debe ser una función booleana:
+def filtrar_mayores_edad(edad):
+    return edad >= 18
+
+def filtra_personas_mayores(persona):
+    return int(persona["edad"]) >= 18
+
+mayores_edad = list(filter(filtrar_mayores_edad, edades))
+
+# Filtrar personas mayores de edad
+personas_mayores = list(filter(filtra_personas_mayores, personas))
+
+print(f"Mayores de edad: {mayores_edad}")
+print(f"Personas mayores de edad: {personas_mayores}")
+
+numeros = list(range(1,101))
+
+sum = 0
+for i in numeros:
+    sum = sum + i
+    
+print (sum)
+
+suma = reduce(lambda a,b:a+b, numeros)
+print(suma)
+
+
+palabras = ["en","un", "lugar"]
